@@ -37,3 +37,10 @@ file为可选参数
 
 `git remote -v`
 
+#### 如果已经push的代码中的log想要修改或者追加
+
+`git commit --amend`
+
+#### 合并本地和远程代码
+
+`git merge github/master`
