@@ -1,12 +1,11 @@
 #include <stdio.h>
+#define SQUARE(X) X *X
+#define PRINT(X) printf("the value of " #X " is %d\n", X)
+#define CAT(X, Y) X##Y
 
 int main()
 {
-    // // 打开文件
-    // FILE *pf = fopen("test.txt", "r");
-    // fclose(pf);
-    // pf = NULL;
-    // return 0;
-
+    int Class84 = 2022;
+    printf("%d\n", CAT(Class, 84));
     return 0;
 }
