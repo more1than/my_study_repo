@@ -25,7 +25,7 @@ print(a.name)
 
 当设置一个属性的设置值时，会调用到这个魔法方法，每个设置值的方式都会进入这个方法
 
-```
+```python
 class A:
     def __init__(self, value):
         self.value = value

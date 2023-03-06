@@ -16,7 +16,7 @@ select ename. job from emp where job in ("MANAGER", "SALESMAN")
 
 ```sql
 select ename, job from emp where job='MANAGER' 
-union 
+union
 select ename, job from emp where job='SALESMAN'
 ```
 

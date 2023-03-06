@@ -16,6 +16,17 @@
 
 **net stop mysql**
 
+# 坑
+
+```
+D:\mysql-8.0.30-winx64\bin>net start MYSQL
+发生系统错误 5。
+
+拒绝访问。
+```
+
+解决方案：以管理员方式打开CMD
+
 
 
 ### 先启动服务再修改密码
