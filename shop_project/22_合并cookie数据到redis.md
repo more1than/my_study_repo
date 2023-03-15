@@ -48,3 +48,28 @@ def merge_cart_cookie_to_redis(request, user, response):
     return True
 ```
 
+用户登录视图重写post方法，添加合并功能
+
+```python
+class UserAuthorizeView(ObtainJSONWebToken):
+    """自定义账号密码登录视图，实现购物车登陆合并"""
+    def post(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+
+        if serializer.is_valid():
+            user = serializer.object.get('user') or request.user
+            token = serializer.object.get('token')
+            response_data = jwt_response_payload_handler(token, user, request)
+            response = Response(response_data)
+            if api_settings.JWT_AUTH_COOKIE:
+                expiration = (datetime.utcnow() +
+                              api_settings.JWT_EXPIRATION_DELTA)
+                response.set_cookie(api_settings.JWT_AUTH_COOKIE,
+                                    token,
+                                    expires=expiration,
+                                    httponly=True)
+            merge_cart_cookie_to_redis(request, user, response)
+            return response
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+```
+
