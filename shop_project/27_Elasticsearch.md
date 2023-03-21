@@ -1,0 +1,7 @@
+### 搜索引擎
+
+Elasticsearch是目前全文搜索引擎的首选
+
+底层开源库是Lucene,Elasticsearch使用java实现的
+
+Elasticsearch不支持对中文进行分词建立索引，需要配合elasticsearch-analysis-ik来实现中文分词处理
